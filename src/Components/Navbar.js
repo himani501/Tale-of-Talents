@@ -20,6 +20,7 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 30px;
 `
 const Right = styled.div`
   flex: 0.7;
@@ -101,6 +102,11 @@ export const Navbar =  () => {
                             alt="ProfilePic"
                         />
                     </ImageContainer>
+                    <h4 style={{cursor: "pointer"}}>
+                        <a href="https://github.com/himani501/Tale-of-Talents" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                        {"<Tale of Talents/>"}
+                        </a>
+                    </h4>
                 </Left>
                 <Right>
                     <ComponentContainer>
