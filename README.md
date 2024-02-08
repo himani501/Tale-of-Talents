@@ -1,4 +1,8 @@
 # Tale-of-Talents
+
+// about me - use "<br/>" for line break
+// use <b> for bold
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

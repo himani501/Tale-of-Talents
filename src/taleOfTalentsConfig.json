@@ -1,0 +1,14 @@
+{
+  "portfolioName": "HIMANI BHARDWAJ",
+  "professionalTitle": "Software Developer",
+  "aboutMe": "I'm delighted to share a glimpse of my journey with you. As a <b>Full Stack Developer</b>, I thrive on crafting captivating websites using cutting-edge technologies like ReactJS, NodeJS, and REST APIs. <br/><br/> My academic journey led me to complete <b>M.Tech</b> from the prestigious <b>International Institute of Information Technology, Bangalore</b> (IIIT - B) in <b>2021</b>. Currently, I'm embracing the dynamic world of software development as a proud member of IBM India Software Labs (ISL) in Bangalore. At IBM, I've had the privilege of delving into both full-stack and DevOps development, enriching my skill set along the way.<br/><br/>Beyond the realm of technology, I find joy in various pursuits. From engaging in sports to strumming a melody on musical instruments, I'm always seeking new experiences. Exploring new destinations, connecting with diverse individuals, and immersing myself in different cultures are endeavors that truly invigorate me.<br/><br/>If you're reading this, I'd love to connect with you! Feel free to reach out or follow me on <b>LinkedIn</b>. Let's embark on an exciting journey together! Looking forward to connecting with you soon.<br/><br/>Best Regards :)",
+  "socialMediaLinks": {
+    "linkedin": "https://www.linkedin.com/in/himani-bhardwaj/",
+    "github": "https://github.com/himani501/",
+    "code": "https://leetcode.com/babylearner/",
+    "gmail": "mailto:himanibhardwaj501@gmail.com",
+    "facebook": "https://www.facebook.com/himaaanii/",
+    "instagram": "https://www.instagram.com/himaaaaniiiii/"
+  },
+  "skills": [ "JavaScript", "ReactJS", "NodeJS", "C++","Algorithms","GIT", "Data Structures","DevOps", "Jenkins", "Docker", "REST Apis", "Open APIs", "Automation", "Argo CD", "Codecept JS", "JEST", "Mocha/Chai"]
+}

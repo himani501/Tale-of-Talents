@@ -25,37 +25,37 @@ export const SocialMediaHandler = (props) => {
     switch (props.icon) {
         case 'LinkedInIcon':
             iconComponent =
-                <a href="https://www.linkedin.com/in/himani-bhardwaj/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                <a href={props.link} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
                     <LinkedInIcon />
                 </a>
             break;
         case 'GitHubIcon':
             iconComponent =
-                <a href="https://github.com/himani501/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                <a href={props.link} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
                     <GitHubIcon />
                 </a>
             break;
         case 'CodeIcon':
             iconComponent =
-                <a href="https://leetcode.com/babylearner/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                <a href={props.link} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
                     <CodeIcon />
                 </a>
             break;
         case 'EmailIcon':
             iconComponent =
-                <a href="mailto:himanibhardwaj501@gmail.com" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                <a href={props.link} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
                     <EmailIcon />
                 </a>
             break;
         case 'FacebookIcon':
             iconComponent =
-                <a href="https://www.facebook.com/himaaanii/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                <a href={props.link} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
                     <FacebookIcon />
                 </a>
             break;
         case 'InstagramIcon':
             iconComponent =
-                <a href="https://www.instagram.com/himaaaaniiiii/" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
+                <a href={props.link} target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
                     <InstagramIcon />
                 </a>
             break;

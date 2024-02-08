@@ -1,9 +1,11 @@
 import React from "react";
 import styled, {keyframes} from "styled-components";
-import ProfilePic from '../Images/himpic.jpeg';
-import BackgroundImage from '../Images/background-1.jpeg'
+import taleOfTalentsConfig from '../taleOfTalentsConfig.json';
 import {SocialMediaHandler} from "../Components/SocialMediaHandler";
-import Resume_Himani from '../Resume/Resume_HimaniBhardwaj.pdf';
+import BackgroundImage from '../Images/background-1.jpeg'
+/* Reset following imports according to you */
+import Resume from '../Resume/Resume_HimaniBhardwaj.pdf';
+import ProfilePic from '../Images/himpic.jpeg';
 
 const Wrapper = styled.div`
   display: flex;
@@ -130,7 +132,7 @@ const SocialMediaWrapper = styled.div`
 `
 export const Introduction = () => {
     const openResume = () => {
-        window.open(Resume_Himani, '_blank');
+        window.open(Resume, '_blank');
     }
     return (
         <Wrapper>
@@ -138,10 +140,10 @@ export const Introduction = () => {
                 <Salutation>Hi There</Salutation>
                 <Title>
                     <T1>I'M </T1>
-                    <T2>HIMANI BHARDWAJ</T2>
+                    <T2>{taleOfTalentsConfig.portfolioName}</T2>
                 </Title>
                 <Content>
-                    I am a Software Developer
+                    I am a {taleOfTalentsConfig.professionalTitle}
                 </Content>
                 <ButtonWrapper>
                     <Button1 onClick={openResume}>
@@ -149,12 +151,12 @@ export const Introduction = () => {
                     </Button1>
                 </ButtonWrapper>
                 <SocialMediaWrapper>
-                    <SocialMediaHandler icon="LinkedInIcon"/>
-                    <SocialMediaHandler icon="GitHubIcon"/>
-                    <SocialMediaHandler icon="CodeIcon"/>
-                    <SocialMediaHandler icon="EmailIcon"/>
-                    <SocialMediaHandler icon="FacebookIcon"/>
-                    <SocialMediaHandler icon="InstagramIcon"/>
+                    <SocialMediaHandler icon="LinkedInIcon" link={taleOfTalentsConfig.socialMediaLinks.linkedin}/>
+                    <SocialMediaHandler icon="GitHubIcon" link={taleOfTalentsConfig.socialMediaLinks.github}/>
+                    <SocialMediaHandler icon="CodeIcon" link={taleOfTalentsConfig.socialMediaLinks.code}/>
+                    <SocialMediaHandler icon="EmailIcon" link={taleOfTalentsConfig.socialMediaLinks.gmail}/>
+                    <SocialMediaHandler icon="FacebookIcon" link={taleOfTalentsConfig.socialMediaLinks.facebook}/>
+                    <SocialMediaHandler icon="InstagramIcon" link={taleOfTalentsConfig.socialMediaLinks.instagram}/>
                 </SocialMediaWrapper>
             </LeftContainer>
             <RightContainer>
