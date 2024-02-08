@@ -3,6 +3,7 @@ import styled from "styled-components";
 import profilePic from '../Images/himpic.jpeg';
 import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
+import {Link, Navigate} from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -28,29 +29,6 @@ const Right = styled.div`
   align-items: center;
   justify-content: flex-end; // align items to the right
   margin-right: 30px;
-`
-const ComponentContainer = styled.div`
-  cursor: pointer;
-  margin-right: 45px;
-  align-content: center;
-  font-weight: 900;
-  position: relative;
-  display: inline-block;
-  color: black; /* Default text color */
-
-  &:hover {
-    color: blue; /* Text color on hover */
-    &:after {
-      content: '';
-      position: absolute;
-      left: 50%; /* Position the underline in the middle */
-      transform: translateX(-50%); /* Center the underline */
-      bottom: -2px; 
-      width: 120%; /* Width of the underline */
-      height: 2px; 
-      background-color: black; 
-    }
-  }
 `
 const ImageContainer = styled.div`
   position: relative;
@@ -82,12 +60,40 @@ const Image = styled.img`
     opacity: 1; /* Show the enlarged image when hovering over the original image */
   }
 `
-const Home = styled.div``
-const About = styled.div``
-const WorkExp = styled.div``
-const Projects = styled.div``
-const Blogs = styled.div``
+const LinkWrapper = styled(Link)`
+  cursor: pointer;
+  margin-right: 45px;
+  align-content: center;
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+  color: black; /* Default text color */
+  text-decoration: none;
+
+  &:hover {
+    color: blue; /* Text color on hover */
+    &:after {
+      content: '';
+      position: absolute;
+      left: 50%; /* Position the underline in the middle */
+      transform: translateX(-50%); /* Center the underline */
+      bottom: -2px;
+      width: 120%; /* Width of the underline */
+      height: 2px;
+      background-color: black;
+    }
+  }
+`
 export const Navbar =  () => {
+    const [gotoContactPage, setContactPage] = React.useState(false);
+
+    const handleClick = () => {
+        setContactPage(prevState => !prevState);
+    };
+
+    if (gotoContactPage) {
+        return <Navigate to="/contact" />;
+    }
     return (
         <Container>
             <Wrapper>
@@ -109,22 +115,17 @@ export const Navbar =  () => {
                     </h4>
                 </Left>
                 <Right>
-                    <ComponentContainer>
-                        <Home>Home</Home>
-                    </ComponentContainer>
-                    <ComponentContainer>
-                        <About>About Me</About>
-                    </ComponentContainer>
-                    <ComponentContainer>
-                        <WorkExp>Professional Experience</WorkExp>
-                    </ComponentContainer>
-                    <ComponentContainer>
-                        <Projects>Personal Projects</Projects>
-                    </ComponentContainer>
-                    <ComponentContainer>
-                        <Blogs>Blogs</Blogs>
-                    </ComponentContainer>
-                    <Button variant="contained" endIcon={<SendIcon/>} style={{fontWeight: 900, marginRight: '45px'}}>
+                    <LinkWrapper to="/">Home</LinkWrapper>
+                    <LinkWrapper to="/about">About Me</LinkWrapper>
+                    <LinkWrapper to="/workexperience">Professional Experience</LinkWrapper>
+                    <LinkWrapper to="/projects">Personal Projects</LinkWrapper>
+                    <LinkWrapper to="/blogs">Blogs</LinkWrapper>
+                    <Button
+                        variant="contained"
+                        endIcon={<SendIcon/>}
+                        style={{fontWeight: 900, marginRight: '45px'}}
+                        onClick={handleClick}
+                    >
                         Get in Touch
                     </Button>
                 </Right>

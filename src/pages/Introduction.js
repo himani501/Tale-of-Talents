@@ -75,8 +75,6 @@ const bounceAnimation = keyframes`
     transform: translateY(-10px);
   }
 `
-
-// Styled component with animation applied
 const Button1 = styled.button`
   cursor: pointer;
   margin-left: 150px;
@@ -99,24 +97,6 @@ const Button1 = styled.button`
   }
 
   animation-delay: 3s; /* Delay the animation start by 3 seconds */
-`
-const Button2 = styled.button`
-  cursor: pointer;
-  margin-left: 150px;
-  margin-right: -50px;
-  padding: 20px;
-  border: 3px solid black;
-  border-radius: 5%;
-  background-color: cornflowerblue;
-  color: white;
-  font-weight: bolder;
-  font-size: 20px;
-  transition: transform 0.3s ease; /* Add transition for smooth animation */
-
-  &:hover {
-    background-color: mediumblue;
-    transform: scale(1.1); /* Zoom out by 10% on hover */
-  }
 `
 const RightContainer = styled.div`
   flex: 1;
@@ -167,9 +147,6 @@ export const Introduction = () => {
                     <Button1 onClick={openResume}>
                         Check my Resume
                     </Button1>
-                    <Button2 >
-                        Contact Me
-                    </Button2>
                 </ButtonWrapper>
                 <SocialMediaWrapper>
                     <SocialMediaHandler icon="LinkedInIcon"/>
