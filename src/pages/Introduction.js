@@ -2,12 +2,8 @@ import React from "react";
 import styled, {keyframes} from "styled-components";
 import ProfilePic from '../Images/himpic.jpeg';
 import BackgroundImage from '../Images/background-1.jpeg'
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import EmailIcon from '@mui/icons-material/Email';
-import CodeIcon from '@mui/icons-material/Code';
+import {SocialMediaHandler} from "../Components/SocialMediaHandler";
+import Resume_Himani from '../Resume/Resume_HimaniBhardwaj.pdf';
 
 const Wrapper = styled.div`
   display: flex;
@@ -147,28 +143,15 @@ const Image = styled.img`
   align-items: center;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.7);
 `
-const SocialMediaContainer = styled.div`
+const SocialMediaWrapper = styled.div`
   display: flex;
   margin-left: 150px;
-  margin-top: 40px;
+  margin-top: 45px;
 `
-const IconContainer = styled.div`
-  cursor: pointer;
-  padding: 20px;
-  height: 100px;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.1); /* Zoom out by 10% on hover */
-  }
-`
-const SocialIcons = ({ Icon }) => {
-    return (
-        <IconContainer>
-            <Icon /> {/* Render the provided icon */}
-        </IconContainer>
-    );
-};
 export const Introduction = () => {
+    const openResume = () => {
+        window.open(Resume_Himani, '_blank');
+    }
     return (
         <Wrapper>
             <LeftContainer>
@@ -181,21 +164,21 @@ export const Introduction = () => {
                     I am a Software Developer
                 </Content>
                 <ButtonWrapper>
-                    <Button1>
+                    <Button1 onClick={openResume}>
                         Check my Resume
                     </Button1>
                     <Button2 >
                         Contact Me
                     </Button2>
                 </ButtonWrapper>
-                <SocialMediaContainer>
-                    <SocialIcons Icon={LinkedInIcon}/>
-                    <SocialIcons Icon={GitHubIcon}/>
-                    <SocialIcons Icon={CodeIcon}/>
-                    <SocialIcons Icon={EmailIcon}/>
-                    <SocialIcons Icon={FacebookIcon}/>
-                    <SocialIcons Icon={InstagramIcon}/>
-                </SocialMediaContainer>
+                <SocialMediaWrapper>
+                    <SocialMediaHandler icon="LinkedInIcon"/>
+                    <SocialMediaHandler icon="GitHubIcon"/>
+                    <SocialMediaHandler icon="CodeIcon"/>
+                    <SocialMediaHandler icon="EmailIcon"/>
+                    <SocialMediaHandler icon="FacebookIcon"/>
+                    <SocialMediaHandler icon="InstagramIcon"/>
+                </SocialMediaWrapper>
             </LeftContainer>
             <RightContainer>
                 <ImageContainer>
