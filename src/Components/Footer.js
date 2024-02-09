@@ -5,7 +5,7 @@ const Footer = () => {
 
     return (
         <footer style={footerStyle}>
-            <p style={{ textAlign: 'center', margin: 0 }}>&copy; {currentYear} Tale of talents by Himani Bhardwaj. All Rights Reserved.</p>
+            <p style={{ textAlign: 'center', fontSize: '0.8rem', margin: 0 }}>&copy; {currentYear} Tale of talents by Himani Bhardwaj. All Rights Reserved.</p>
         </footer>
     );
 }
