@@ -110,12 +110,12 @@ const RightContainer = styled.div`
 const ImageContainer = styled.div`
   height: 80%;
   width: 80%;
-  background-color: lightblue;
+  background-color: lightgrey;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 20%;
-  box-shadow: inset 0px 0px 5px 5px rgba(0, 0, 0, 2.0);
+  box-shadow: inset 0px 0px 5px 3px rgba(0, 0, 0, 1.0);
 `
 const Image = styled.img`
   height: 70%;

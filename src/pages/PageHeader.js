@@ -30,7 +30,7 @@ export const PageHeader = (props) => {
         <div>
             <ContainerPage>
                 <ContainerTitle>{props.pageTitle}</ContainerTitle>
-                <h3 style={{bottom: "-30px", position: "relative"}}>
+                <h3 style={{bottom: "-15px", position: "relative"}}>
                     {props.pageDescription}
                 </h3>
                 <h4>{props.pageEndNote}</h4>
