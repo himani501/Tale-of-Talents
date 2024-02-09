@@ -1,5 +1,6 @@
 import React from "react";
 import {Navbar} from "../Components/Navbar";
+import {PageHeader} from "./PageHeader";
 import styled from "styled-components";
 import BackgroundImage from '../Images/background-1.jpeg'
 import taleOfTalentsConfig from'../taleOfTalentsConfig.json'
@@ -13,53 +14,25 @@ const Wrapper = styled.div`
   background-size: cover;
   background-position: center;
   margin-top: 10px;
-`;
-
-const AboutHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 25vh;
-  flex-direction: column;
-`;
-
+`
 const ParentContainer = styled.div`
   display: flex;
   flex: 1; /* Take up remaining space */
   justify-content: center;
   align-items: center;
-`;
-
+`
 const LeftContainer = styled.div`
   flex: 1;
   display: flex;
   height: 100%;
   position: relative;
-`;
-
+`
 const RightContainer = styled.div`
   flex: 1;
   display: flex;
   height: 100%;
   position: relative;
-`;
-const AboutTitle = styled.p`
-  font-weight: 900;
-  letter-spacing: 4px;
-  font-size: 50px;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -25px; // distance between heading and underline
-    width: 30%;
-    border-bottom: 10px solid blueviolet; 
-    border-radius: 30%;
-    left: 35%;
-  }
-`;
+`
 const AboutDescription = styled.p`
   position: absolute;
   top: 70px; 
@@ -70,7 +43,7 @@ const AboutDescription = styled.p`
   font-size: 18px;
   font-style: italic;
   box-sizing: border-box;
-`;
+`
 const SkillContainer = styled.div`
   position: absolute;
   top: 50px;
@@ -86,13 +59,11 @@ export const About = () => {
         <div>
             <Navbar />
             <Wrapper>
-                <AboutHeader>
-                    <AboutTitle>ABOUT ME</AboutTitle>
-                    <h3 style={{bottom: "-30px", position: "relative"}}>
-                        Hello!! Discover insights about me, my endeavors, and my expertise, primarily focused on programming and technology.
-                    </h3>
-                    <h4>Hope to connect with you soon :)</h4>
-                </AboutHeader>
+                <PageHeader
+                    pageTitle="ABOUT ME"
+                    pageDescription="Hello!! Discover insights about me, my endeavors, and my expertise, primarily focused on programming and technology."
+                    pageEndNote="Hope to connect with you soon :)"
+                />
                 <ParentContainer>
                     <LeftContainer>
                         <AboutDescription>

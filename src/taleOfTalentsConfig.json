@@ -24,5 +24,12 @@
       "projectLink": "https://github.com/himani501/DreamShoppe",
       "projectImagePath": "dreamshoppe-1.png"
     }
+  ],
+  "blogs": [
+    {
+      "blogTitle": "Using IBM® App Connect to interact with IBM DB2 onCloud",
+      "blogLink": "https://community.ibm.com/community/user/integration/blogs/himani-bhardwaj2/2023/07/10/using-ibmappconnect-to-interact-with-ibm-db2cloud",
+      "blogDescription": "IBM App Connect is an integration platform designed to facilitate seamless connectivity between multiple applications, which we refer to as \"connectors\". As part of the IBM App Connect team, there was a business requirement to support a JDBC-based DB2 connector on AceCCmt. I developed the new IBM DB2 connector from scratch, which is now being used in the production environment and available for customers. This blog post describes the usability and functionality of the IBM DB2 connector for customers."
+    }
   ]
 }

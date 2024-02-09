@@ -3,6 +3,7 @@ import {Navbar} from "../Components/Navbar";
 import styled from "styled-components";
 import taleOfTalentsConfig from'../taleOfTalentsConfig.json'
 import BackgroundImage from "../Images/background-1.jpeg";
+import {PageHeader} from "./PageHeader";
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,39 +15,15 @@ const Wrapper = styled.div`
   background-size: cover;
   background-position: center;
   margin-top: 10px;
-`;
-
-const AboutHeader = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 25vh;
-  flex-direction: column;
-`;
-const AboutTitle = styled.p`
-  font-weight: 900;
-  letter-spacing: 4px;
-  font-size: 50px;
-  position: relative;
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: -25px; // distance between heading and underline
-    width: 30%;
-    border-bottom: 10px solid blueviolet; 
-    border-radius: 30%;
-    left: 35%;
-  }
-`;
+`
 const ParentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-`;
+`
 const ProjectContainer = styled.div`
   display: flex;
-  margin: 40px;
+  margin-top: 50px;
+  margin-bottom: 40px;
 `
 const ImageContainer = styled.div`
   flex: 1;
@@ -125,13 +102,11 @@ export const Projects = () => {
         <div>
             <Navbar/>
             <Wrapper>
-                <AboutHeader>
-                    <AboutTitle>PROJECTS</AboutTitle>
-                    <h3 style={{bottom: "-20px", position: "relative"}}>
-                        Check out my projects! Each has a link and a picture of what it looks like.
-                    </h3>
-                    <h4>Embark on this journey of inspiration with me :)</h4>
-                </AboutHeader>
+                <PageHeader
+                    pageTitle="PROJECTS"
+                    pageDescription="Check out my projects! Each has a link and a picture of what it looks like."
+                    pageEndNote="Embark on this journey of inspiration with me :)"
+                />
                 <ParentContainer>
                         {projectInfo.map((project, index) => (
                             <ProjectWrapper

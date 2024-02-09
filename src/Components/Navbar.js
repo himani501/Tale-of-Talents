@@ -117,7 +117,7 @@ export const Navbar =  () => {
                 <Right>
                     <LinkWrapper to="/">Home</LinkWrapper>
                     <LinkWrapper to="/about">About Me</LinkWrapper>
-                    <LinkWrapper to="/workexperience">Professional Experience</LinkWrapper>
+                    {/*<LinkWrapper to="/workexperience">Professional Experience</LinkWrapper>*/}
                     <LinkWrapper to="/projects">Personal Projects</LinkWrapper>
                     <LinkWrapper to="/blogs">Blogs</LinkWrapper>
                     <Button
