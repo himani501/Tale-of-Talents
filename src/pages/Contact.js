@@ -1,9 +1,10 @@
 import React from "react";
 import {Navbar} from "../Components/Navbar";
-import {PageHeader} from "./PageHeader";
+import {PageHeader} from "../Components/PageHeader";
 import taleOfTalentsConfig from'../taleOfTalentsConfig.json'
 import styled from "styled-components";
 import BackgroundImage from '../Images/background-1.jpeg'
+import Footer from '../Components/Footer';
 
 const Wrapper = styled.div`
   display: flex;
@@ -76,6 +77,7 @@ export const Contact = () => {
                     </ContactForm>
                 </ContactWrapper>
             </Wrapper>
+            <Footer/>
         </div>
     )
 }

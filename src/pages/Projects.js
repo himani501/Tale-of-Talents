@@ -3,7 +3,8 @@ import {Navbar} from "../Components/Navbar";
 import styled from "styled-components";
 import taleOfTalentsConfig from'../taleOfTalentsConfig.json'
 import BackgroundImage from "../Images/background-1.jpeg";
-import {PageHeader} from "./PageHeader";
+import {PageHeader} from "../Components/PageHeader";
+import Footer from '../Components/Footer';
 
 const Wrapper = styled.div`
   display: flex;
@@ -119,6 +120,7 @@ export const Projects = () => {
                         ))}
                 </ParentContainer>
             </Wrapper>
+            <Footer/>
         </div>
     )
 }
