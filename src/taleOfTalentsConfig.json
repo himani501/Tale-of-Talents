@@ -10,5 +10,19 @@
     "facebook": "https://www.facebook.com/himaaanii/",
     "instagram": "https://www.instagram.com/himaaaaniiiii/"
   },
-  "skills": [ "JavaScript", "ReactJS", "NodeJS", "C++","Algorithms","GIT", "Data Structures","DevOps", "Jenkins", "Docker", "REST Apis", "Open APIs", "Automation", "Argo CD", "Codecept JS", "JEST", "Mocha/Chai"]
+  "skills": [ "JavaScript", "ReactJS", "NodeJS", "C++","Algorithms","GIT", "Data Structures","DevOps", "Jenkins", "Docker", "REST Apis", "Open APIs", "Automation", "Argo CD", "Codecept JS", "JEST", "Mocha/Chai"],
+  "projects": [
+    {
+      "projectName": "TALE OF TALENTS",
+      "projectDescription": "Tale of Talents is an open-source project based on React JS, which can be used as a template by any user and facilitates them to build their own portfolio quickly. It provides a config file to fill in the user's required information, and then you are good to go. This portfolio website is also made using the Tale of Talents project.",
+      "projectLink": "https://github.com/himani501/Tale-of-Talents",
+      "projectImagePath": "tale-of-talents.png"
+    },
+    {
+      "projectName": "DreamShoppe",
+      "projectDescription": "DreamShoppe is an e-commerce platform built with React for the frontend and Node.js for the backend. It offers a diverse range of products and ensures a seamless shopping experience. With its intuitive UI and robust backend, DreamShoppe prioritizes user satisfaction, security, and convenience, making it a premier destination for online shopping.",
+      "projectLink": "https://github.com/himani501/DreamShoppe",
+      "projectImagePath": "dreamshoppe-1.png"
+    }
+  ]
 }
