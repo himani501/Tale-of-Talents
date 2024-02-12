@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktale_of_talents=self.webpackChunktale_of_talents||[]).push([[968],{1968:(e,t,a)=>{e.exports=a.p+"static/media/dreamshoppe-2.32ef7b68d07b08fc4ea5.png"}}]);

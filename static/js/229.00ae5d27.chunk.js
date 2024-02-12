@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunktale_of_talents=self.webpackChunktale_of_talents||[]).push([[229],{229:(e,t,a)=>{e.exports=a.p+"static/media/tale-of-talents.eca966cf49ed9e02af4e.png"}}]);

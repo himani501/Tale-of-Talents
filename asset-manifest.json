@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Tale-of-Talents/static/css/main.f855e6bc.css",
+    "main.js": "/Tale-of-Talents/static/js/main.a696526e.js",
+    "static/js/980.c982fb9f.chunk.js": "/Tale-of-Talents/static/js/980.c982fb9f.chunk.js",
+    "static/js/968.22a65881.chunk.js": "/Tale-of-Talents/static/js/968.22a65881.chunk.js",
+    "static/js/229.00ae5d27.chunk.js": "/Tale-of-Talents/static/js/229.00ae5d27.chunk.js",
+    "static/js/592.ef5790ee.chunk.js": "/Tale-of-Talents/static/js/592.ef5790ee.chunk.js",
+    "static/media/dreamshoppe-2.png": "/Tale-of-Talents/static/media/dreamshoppe-2.32ef7b68d07b08fc4ea5.png",
+    "static/media/dreamshoppe-1.png": "/Tale-of-Talents/static/media/dreamshoppe-1.6dd864d7f5a4b0508641.png",
+    "static/media/tale-of-talents.png": "/Tale-of-Talents/static/media/tale-of-talents.eca966cf49ed9e02af4e.png",
+    "static/media/Resume_HimaniBhardwaj.pdf": "/Tale-of-Talents/static/media/Resume_HimaniBhardwaj.cd3d3a34159f5d6b005f.pdf",
+    "static/media/himpic.jpeg": "/Tale-of-Talents/static/media/himpic.e86dfa78c1acc0c7ec07.jpeg",
+    "index.html": "/Tale-of-Talents/index.html",
+    "main.f855e6bc.css.map": "/Tale-of-Talents/static/css/main.f855e6bc.css.map",
+    "main.a696526e.js.map": "/Tale-of-Talents/static/js/main.a696526e.js.map",
+    "592.ef5790ee.chunk.js.map": "/Tale-of-Talents/static/js/592.ef5790ee.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.a696526e.js"
+  ]
+}
