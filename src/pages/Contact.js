@@ -7,75 +7,184 @@ import BackgroundImage from '../Images/background-1.jpeg'
 import Footer from '../Components/Footer';
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  background-image: url(${BackgroundImage});
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%),
+              url(${BackgroundImage});
   background-size: cover;
   background-position: center;
-  margin-top: 10px;
+  background-attachment: fixed;
+  padding: var(--spacing-3xl) 0;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 0;
+  }
 `
+
+const Container = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  position: relative;
+  z-index: 1;
+`
+
 const ContactWrapper = styled.div`
-  display: flex;
-  height: 100%; /* Take full height of its parent */
-  width: 100%; /* Take full width of its parent */
-  margin-top: 20px;
-  margin-left: 400px;
+  margin-top: var(--spacing-3xl);
 `
+
 const ContactForm = styled.form`
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl);
+  box-shadow: var(--shadow-xl);
   display: flex;
   flex-direction: column;
-  padding: 40px;
-  background-color: white;
-  width: 900px;
-  height: 500px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.7);
+  gap: var(--spacing-xl);
 `
-const UsernameInput = styled.input`
-  padding: 10px;
+
+const FormGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
 `
-const EmailInput = styled.input`
-  padding: 10px;
+
+const Label = styled.label`
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--text-primary);
 `
-const MessageInput = styled.textarea`
-  height: 150px;
+
+const Input = styled.input`
+  padding: var(--spacing-md);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
+`
+
+const TextArea = styled.textarea`
+  padding: var(--spacing-md);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  min-height: 150px;
   resize: vertical;
-  margin-bottom: 30px;
+  font-family: var(--font-sans);
+  transition: all var(--transition-fast);
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  }
+  
+  &::placeholder {
+    color: var(--text-tertiary);
+  }
 `
-const SendButton = styled.button`
-  cursor: pointer;
-  width: 30%;
-  border: 3px solid black;
-  border-radius: 5%;
-  background-color: blueviolet;
-  color: white;
-  font-weight: bolder;
-  font-size: 20px;
-  padding: 14px;
+
+const SubmitButton = styled.button`
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-inverse);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-lg);
+  border: none;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+  align-self: flex-start;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  @media (max-width: 768px) {
+    align-self: stretch;
+  }
 `
 export const Contact = () => {
     return (
         <div>
             <Navbar/>
             <Wrapper>
-                <PageHeader
-                    pageTitle="CONTACT"
-                    pageDescription={`Get in touch or shoot me an email directly on "${taleOfTalentsConfig.email}"`}
-                    pageEndNote="I'll respond to you as soon as I can. Thank you for reaching out!"
-                />
-                <ContactWrapper>
-                    <ContactForm
-                        action={taleOfTalentsConfig.formspreeEndpoint}
-                        method="POST" >
-                        <h3>Name</h3>
-                        <UsernameInput type="text" name="username" placeholder="Enter Your Name" autoComplete="off" required />
-                        <h3>Email</h3>
-                        <EmailInput type="email" name="Email" placeholder="Enter Your Email" autoComplete="off" required />
-                        <h3>Message</h3>
-                        <MessageInput name="message" placeholder="Enter Your Message" cols="30" rows="6" autoComplete="off" required/>
-                        <SendButton>SUBMIT</SendButton>
-                    </ContactForm>
-                </ContactWrapper>
+                <Container>
+                    <PageHeader
+                        pageTitle="GET IN TOUCH"
+                        pageDescription={`Have a question or want to work together? Feel free to reach out at ${taleOfTalentsConfig.email}`}
+                        pageEndNote="I'll get back to you as soon as possible!"
+                    />
+                    <ContactWrapper>
+                        <ContactForm
+                            action={taleOfTalentsConfig.formspreeEndpoint}
+                            method="POST"
+                        >
+                            <FormGroup>
+                                <Label htmlFor="name">Name</Label>
+                                <Input
+                                    type="text"
+                                    id="name"
+                                    name="username"
+                                    placeholder="Your name"
+                                    autoComplete="name"
+                                    required
+                                />
+                            </FormGroup>
+                            
+                            <FormGroup>
+                                <Label htmlFor="email">Email</Label>
+                                <Input
+                                    type="email"
+                                    id="email"
+                                    name="Email"
+                                    placeholder="your.email@example.com"
+                                    autoComplete="email"
+                                    required
+                                />
+                            </FormGroup>
+                            
+                            <FormGroup>
+                                <Label htmlFor="message">Message</Label>
+                                <TextArea
+                                    id="message"
+                                    name="message"
+                                    placeholder="Your message here..."
+                                    autoComplete="off"
+                                    required
+                                />
+                            </FormGroup>
+                            
+                            <SubmitButton type="submit">Send Message</SubmitButton>
+                        </ContactForm>
+                    </ContactWrapper>
+                </Container>
             </Wrapper>
             <Footer/>
         </div>

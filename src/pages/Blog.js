@@ -7,63 +7,130 @@ import styled from "styled-components";
 import Footer from '../Components/Footer';
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 90vh;
-  background-image: url(${BackgroundImage});
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%),
+              url(${BackgroundImage});
   background-size: cover;
   background-position: center;
-  margin-top: 10px;
+  background-attachment: fixed;
+  padding: var(--spacing-3xl) 0;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 0;
+  }
 `
-const BlogContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 20px;
+
+const Container = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  position: relative;
+  z-index: 1;
 `
-const BlogTitle = styled.h1`
-    margin-left: 150px;
+
+const BlogsGrid = styled.div`
+  display: grid;
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-3xl);
 `
-const BlogLink = styled.a`
-  margin-left: 150px;
-  letter-spacing: 3px;
-  font-weight: bold;
-  font-size: 20px;
-  text-decoration: none;
-  color: blue;
+
+const BlogCard = styled.article`
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  border-left: 4px solid transparent;
+  
+  &:hover {
+    transform: translateX(8px);
+    box-shadow: var(--shadow-xl);
+    border-left-color: var(--primary-color);
+  }
 `
+
+const BlogTitle = styled.h3`
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+  line-height: var(--leading-tight);
+`
+
 const BlogDescription = styled.p`
-  margin-left: 150px;
-  margin-right: 150px;
-  letter-spacing: 1px;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0 0 var(--spacing-lg) 0;
 `
-const BlogWrapper = ( { blogTitle, blogLink, blogDescription } ) => {
+
+const BlogLink = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  color: var(--primary-color);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  
+  &:after {
+    content: '→';
+    transition: transform var(--transition-fast);
+  }
+  
+  &:hover {
+    color: var(--primary-dark);
+    
+    &:after {
+      transform: translateX(4px);
+    }
+  }
+`
+
+const BlogWrapper = ({blogTitle, blogLink, blogDescription}) => {
     return (
-        <BlogContainer>
+        <BlogCard>
             <BlogTitle>{blogTitle}</BlogTitle>
-            <BlogLink href={blogLink} target="_blank" rel="noopener noreferrer" >Link to the blog</BlogLink>
             <BlogDescription>{blogDescription}</BlogDescription>
-        </BlogContainer>
+            <BlogLink href={blogLink} target="_blank" rel="noopener noreferrer">
+                Read Article
+            </BlogLink>
+        </BlogCard>
     )
 }
 export const Blog = () => {
     const blogInfo = taleOfTalentsConfig.blogs
+    
     return (
         <div>
             <Navbar/>
             <Wrapper>
-                <PageHeader
-                    pageTitle="BLOGS"
-                    pageDescription="Discover my latest blog posts! From insightful analyses to captivating narratives, each post offers a unique perspective. "
-                    pageEndNote="Let me know your thoughts :)"
-                />
-                { blogInfo.map((blog, index) => (
-                    <BlogWrapper
-                        key={index}
-                        blogTitle={blog.blogTitle}
-                        blogLink={blog.blogLink}
-                        blogDescription={blog.blogDescription}
+                <Container>
+                    <PageHeader
+                        pageTitle="BLOG"
+                        pageDescription="Insights, tutorials, and thoughts on software engineering, technology, and professional development."
+                        pageEndNote="I'd love to hear your thoughts and feedback!"
                     />
-                )) }
+                    <BlogsGrid>
+                        {blogInfo.map((blog, index) => (
+                            <BlogWrapper
+                                key={index}
+                                blogTitle={blog.blogTitle}
+                                blogLink={blog.blogLink}
+                                blogDescription={blog.blogDescription}
+                            />
+                        ))}
+                    </BlogsGrid>
+                </Container>
             </Wrapper>
             <Footer/>
         </div>

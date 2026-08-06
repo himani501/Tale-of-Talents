@@ -2,98 +2,145 @@ import React from "react";
 import styled from "styled-components";
 import profilePic from '../Images/himpic.jpeg';
 import SendIcon from '@mui/icons-material/Send';
-import Button from '@mui/material/Button';
-import {Link, Navigate} from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
-  height: 100px;
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
+  height: 80px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
 `
 const Wrapper = styled.div`
-  background-color: white;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 100%;
 `
 const Left = styled.div`
-  flex: 0.3;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-left: 30px;
+  gap: var(--spacing-lg);
 `
 const Right = styled.div`
-  flex: 0.7;
   display: flex;
   align-items: center;
-  justify-content: flex-end; // align items to the right
-  margin-right: 30px;
+  gap: var(--spacing-lg);
 `
 const ImageContainer = styled.div`
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 `
 
-// Styled component for the enlarged image
-const EnlargedImage = styled.img`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(2); /* Center the image and scale it */
-  border-radius: 50%;
-  overflow: hidden;
-  padding: 10px;
-  z-index: 1;
-  transition: opacity 0.3s ease; /* Add transition for smooth opacity change */
-  opacity: ${({ isVisible }) => (isVisible ? '1' : '0')}; /* Show the image if isVisible is true */
-`
-
-// Styled component for the original image
 const Image = styled.img`
-  height: 70px;
-  border-radius: 50%;
-  overflow: hidden;
-  padding: 10px;
-
-  &:hover + ${EnlargedImage} {
-    opacity: 1; /* Show the enlarged image when hovering over the original image */
-  }
-`
-const LinkWrapper = styled(Link)`
+  height: 50px;
+  width: 50px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  transition: all var(--transition-normal);
   cursor: pointer;
-  margin-right: 45px;
-  align-content: center;
-  font-weight: 900;
-  position: relative;
-  display: inline-block;
-  color: black; /* Default text color */
-  text-decoration: none;
 
   &:hover {
-    color: blue; /* Text color on hover */
+    transform: scale(1.1);
+    box-shadow: var(--shadow-lg);
+  }
+`
+
+const Logo = styled.div`
+  font-size: var(--text-xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  
+  &:hover {
+    color: var(--primary-color);
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`
+
+const NavLinks = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xl);
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+const LinkWrapper = styled.a`
+  cursor: pointer;
+  font-weight: var(--font-medium);
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  text-decoration: none;
+  position: relative;
+  padding: var(--spacing-xs) 0;
+  transition: color var(--transition-fast);
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transition: width var(--transition-normal);
+  }
+
+  &:hover {
+    color: var(--primary-color);
+    
     &:after {
-      content: '';
-      position: absolute;
-      left: 50%; /* Position the underline in the middle */
-      transform: translateX(-50%); /* Center the underline */
-      bottom: -2px;
-      width: 120%; /* Width of the underline */
-      height: 2px;
-      background-color: black;
+      width: 100%;
     }
   }
 `
-export const Navbar =  () => {
-    const [gotoContactPage, setContactPage] = React.useState(false);
 
-    const handleClick = () => {
-        setContactPage(prevState => !prevState);
+const CTAButton = styled.button`
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-inverse);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+`
+export const Navbar = () => {
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
     };
 
-    if (gotoContactPage) {
-        return <Navigate to="/contact" />;
-    }
     return (
         <Container>
             <Wrapper>
@@ -101,33 +148,27 @@ export const Navbar =  () => {
                     <ImageContainer>
                         <Image
                             src={profilePic}
-                            alt="ProfilePic"
-                        />
-                        <EnlargedImage
-                            src={profilePic}
-                            alt="ProfilePic"
+                            alt="Profile"
+                            onClick={() => scrollToSection('home')}
                         />
                     </ImageContainer>
-                    <h4 style={{cursor: "pointer"}}>
-                        <a href="https://github.com/himani501/Tale-of-Talents" target="_blank" rel="noopener noreferrer" style={{textDecoration: "none", color: "inherit"}}>
-                        {"<Tale of Talents/>"}
+                    <Logo>
+                        <a href="https://github.com/himani501/Tale-of-Talents" target="_blank" rel="noopener noreferrer">
+                            {"<Tale of Talents/>"}
                         </a>
-                    </h4>
+                    </Logo>
                 </Left>
                 <Right>
-                    <LinkWrapper to="/">Home</LinkWrapper>
-                    <LinkWrapper to="/about">About Me</LinkWrapper>
-                    {/*<LinkWrapper to="/workexperience">Professional Experience</LinkWrapper>*/}
-                    <LinkWrapper to="/projects">Personal Projects</LinkWrapper>
-                    <LinkWrapper to="/blogs">Blogs</LinkWrapper>
-                    <Button
-                        variant="contained"
-                        endIcon={<SendIcon/>}
-                        style={{fontWeight: 900, marginRight: '45px'}}
-                        onClick={handleClick}
-                    >
+                    <NavLinks>
+                        <LinkWrapper onClick={() => scrollToSection('home')}>Home</LinkWrapper>
+                        <LinkWrapper onClick={() => scrollToSection('about')}>About</LinkWrapper>
+                        <LinkWrapper onClick={() => scrollToSection('projects')}>Projects</LinkWrapper>
+                        <LinkWrapper onClick={() => scrollToSection('blogs')}>Blog</LinkWrapper>
+                    </NavLinks>
+                    <CTAButton onClick={() => scrollToSection('contact')}>
                         Get in Touch
-                    </Button>
+                        <SendIcon style={{ fontSize: '18px' }} />
+                    </CTAButton>
                 </Right>
             </Wrapper>
         </Container>

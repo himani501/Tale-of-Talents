@@ -7,65 +7,128 @@ import {PageHeader} from "../Components/PageHeader";
 import Footer from '../Components/Footer';
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  min-height: 100vh; 
-  overflow-y: auto;
-  background-image: url(${BackgroundImage});
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(139, 92, 246, 0.03) 100%),
+              url(${BackgroundImage});
   background-size: cover;
   background-position: center;
-  margin-top: 10px;
+  background-attachment: fixed;
+  padding: var(--spacing-3xl) 0;
+  position: relative;
+  
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    z-index: 0;
+  }
 `
-const ParentContainer = styled.div`
+
+const Container = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+  position: relative;
+  z-index: 1;
+`
+
+const ProjectsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--spacing-2xl);
+  margin-top: var(--spacing-3xl);
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+const ProjectCard = styled.div`
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
   display: flex;
-  flex-wrap: wrap;
-`
-const ProjectContainer = styled.div`
-  display: flex;
-  margin-top: 50px;
-  margin-bottom: 40px;
-`
-const ImageContainer = styled.div`
-  flex: 1;
-  display: flex;
-  width: 50%;
-  align-items: center;
-  justify-content: center;
-`
-const ImageItem = styled.img`
-  height: 40vh;
-  width: auto;
-  border: 3px solid black;
-`
-const ContentWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  margin-top: 50px;
   flex-direction: column;
-  align-items: center;
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-2xl);
+  }
 `
-const ProjectTitle = styled.h1`
-  letter-spacing: 4px;
-  font-size: 40px;
+
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: var(--gray-100);
+  position: relative;
 `
+
+const ImageItem = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+  
+  ${ProjectCard}:hover & {
+    transform: scale(1.05);
+  }
+`
+
+const ContentWrapper = styled.div`
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex: 1;
+`
+
+const ProjectTitle = styled.h3`
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  color: var(--text-primary);
+  margin: 0;
+  line-height: var(--leading-tight);
+`
+
 const ProjectDescription = styled.p`
-  width: 80%;
-  margin-bottom: 60px;
+  font-size: var(--text-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+  flex: 1;
 `
+
 const ProjectButton = styled.button`
-  cursor: pointer !important;
-  padding: 20px;
-  border: 3px solid black;
-  border-radius: 5%;
-  background-color: blueviolet;
-  color: white;
-  font-weight: bolder;
-  font-size: 20px;
-  width: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-inverse);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-full);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-base);
+  border: none;
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+  margin-top: var(--spacing-md);
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
 `
-const ProjectWrapper = ( {projectName, projectDescription , projectLink, projectImagePath}) => {
+const ProjectWrapper = ({projectName, projectDescription, projectLink, projectImagePath}) => {
     const [imgSrc, setImageSrc] = React.useState(null)
+    
     useEffect(() => {
         const importImage = async () => {
             try {
@@ -82,43 +145,49 @@ const ProjectWrapper = ( {projectName, projectDescription , projectLink, project
     }, [projectImagePath]);
 
     const showProject = (projectLink) => {
-        window.open(projectLink, '_blank')
+        window.open(projectLink, '_blank', 'noopener,noreferrer')
     }
+    
     return (
-        <ProjectContainer>
+        <ProjectCard>
             <ImageContainer>
-                {imgSrc && <ImageItem src={imgSrc} alt={projectName} /> }
+                {imgSrc && <ImageItem src={imgSrc} alt={projectName} />}
             </ImageContainer>
             <ContentWrapper>
                 <ProjectTitle>{projectName}</ProjectTitle>
                 <ProjectDescription>{projectDescription}</ProjectDescription>
-                <ProjectButton onClick={() => showProject(projectLink)}>Project Link</ProjectButton>
+                <ProjectButton onClick={() => showProject(projectLink)}>
+                    View Project
+                </ProjectButton>
             </ContentWrapper>
-        </ProjectContainer>
+        </ProjectCard>
     )
 }
 export const Projects = () => {
-    const projectInfo = taleOfTalentsConfig.projects
+    const projectInfo = taleOfTalentsConfig.personalProjects || []
+    
     return (
         <div>
             <Navbar/>
             <Wrapper>
-                <PageHeader
-                    pageTitle="PROJECTS"
-                    pageDescription="Check out my projects! Each has a link and a picture of what it looks like."
-                    pageEndNote="Embark on this journey of inspiration with me :)"
-                />
-                <ParentContainer>
+                <Container>
+                    <PageHeader
+                        pageTitle="PROJECTS"
+                        pageDescription="Explore my portfolio of projects showcasing my technical expertise and creative problem-solving."
+                        pageEndNote="Each project represents a unique challenge and learning experience."
+                    />
+                    <ProjectsGrid>
                         {projectInfo.map((project, index) => (
                             <ProjectWrapper
-                            key={index}
-                            projectName ={project.projectName}
-                            projectDescription ={project.projectDescription}
-                            projectLink ={project.projectLink}
-                            projectImagePath ={project.projectImagePath}
+                                key={index}
+                                projectName={project.projectName}
+                                projectDescription={project.projectDescription}
+                                projectLink={project.projectLink}
+                                projectImagePath={project.projectImagePath}
                             />
                         ))}
-                </ParentContainer>
+                    </ProjectsGrid>
+                </Container>
             </Wrapper>
             <Footer/>
         </div>
